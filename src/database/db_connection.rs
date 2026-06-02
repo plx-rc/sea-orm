@@ -1,7 +1,10 @@
 use crate::{
     error::*, AccessMode, ConnectionTrait, DatabaseTransaction, ExecResult, IsolationLevel,
-    QueryResult, Statement, StatementBuilder, StreamTrait, TransactionError, TransactionTrait,
+    QueryResult, Statement, StatementBuilder, TransactionError, TransactionTrait,
 };
+#[cfg(feature = "stream")]
+use crate::StreamTrait;
+
 use sea_query::{MysqlQueryBuilder, PostgresQueryBuilder, QueryBuilder, SqliteQueryBuilder};
 use std::{future::Future, pin::Pin};
 use tracing::instrument;
@@ -211,6 +214,7 @@ impl ConnectionTrait for DatabaseConnection {
 }
 
 #[async_trait::async_trait]
+#[cfg(feature = "stream")]
 impl StreamTrait for DatabaseConnection {
     type Stream<'a> = crate::QueryStream;
 

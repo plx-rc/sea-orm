@@ -221,6 +221,7 @@ impl MockDatabaseConnection {
     }
 }
 
+#[cfg(feature = "stream")]
 impl
     From<(
         Arc<crate::MockDatabaseConnection>,

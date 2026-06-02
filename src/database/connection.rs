@@ -37,6 +37,7 @@ pub trait ConnectionTrait: Sync {
 }
 
 /// Stream query results
+#[cfg(feature = "stream")]
 pub trait StreamTrait: Send + Sync {
     /// Create a stream for the [QueryResult]
     type Stream<'a>: Stream<Item = Result<QueryResult, DbErr>> + Send

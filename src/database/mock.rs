@@ -627,6 +627,7 @@ mod tests {
     }
 
     #[smol_potat::test]
+    #[cfg(feature = "stream")]
     async fn test_stream_1() -> Result<(), DbErr> {
         use futures_util::TryStreamExt;
 
@@ -658,6 +659,7 @@ mod tests {
     }
 
     #[smol_potat::test]
+    #[cfg(feature = "stream")]
     async fn test_stream_2() -> Result<(), DbErr> {
         use fruit::Entity as Fruit;
         use futures_util::TryStreamExt;
@@ -676,6 +678,7 @@ mod tests {
     }
 
     #[smol_potat::test]
+    #[cfg(feature = "stream")]
     async fn test_stream_in_transaction() -> Result<(), DbErr> {
         use futures_util::TryStreamExt;
 

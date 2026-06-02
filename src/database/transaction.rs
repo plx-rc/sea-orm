@@ -1,8 +1,10 @@
 use crate::{
     debug_print, error::*, AccessMode, ConnectionTrait, DbBackend, DbErr, ExecResult,
-    InnerConnection, IsolationLevel, QueryResult, Statement, StreamTrait, TransactionStream,
+    InnerConnection, IsolationLevel, QueryResult, Statement,
     TransactionTrait,
 };
+#[cfg(feature = "stream")]
+use crate::{TransactionStream, StreamTrait};
 #[cfg(feature = "sqlx-dep")]
 use crate::{sqlx_error_to_exec_err, sqlx_error_to_query_err};
 use futures_util::lock::Mutex;
@@ -430,6 +432,7 @@ impl ConnectionTrait for DatabaseTransaction {
     }
 }
 
+#[cfg(feature = "stream")]
 impl StreamTrait for DatabaseTransaction {
     type Stream<'a> = TransactionStream<'a>;
 

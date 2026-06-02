@@ -22,6 +22,7 @@ mod mock;
 #[cfg_attr(docsrs, doc(cfg(feature = "proxy")))]
 mod proxy;
 mod statement;
+#[cfg(feature = "stream")]
 mod stream;
 mod transaction;
 
@@ -35,6 +36,7 @@ pub use mock::*;
 pub use proxy::*;
 pub use statement::*;
 use std::borrow::Cow;
+#[cfg(feature = "stream")]
 pub use stream::*;
 use tracing::instrument;
 pub use transaction::*;

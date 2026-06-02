@@ -1,8 +1,10 @@
+#[cfg(feature = "stream")]
+use crate::StreamTrait;
 use crate::{
     error::*, ConnectionTrait, DbBackend, EntityTrait, FromQueryResult, IdenStatic, Iterable,
     ModelTrait, PartialModelTrait, PrimaryKeyArity, PrimaryKeyToColumn, PrimaryKeyTrait,
     QueryResult, QuerySelect, Select, SelectA, SelectB, SelectC, SelectThree, SelectTwo,
-    SelectTwoMany, Statement, StreamTrait, TryGetableMany,
+    SelectTwoMany, Statement, TryGetableMany,
 };
 use futures_util::{Stream, TryStreamExt};
 use sea_query::{SelectStatement, Value};
@@ -456,6 +458,7 @@ where
     }
 
     /// Stream the results of a SELECT operation on a Model
+    #[cfg(feature = "stream")]
     pub async fn stream<'a: 'b, 'b, C>(
         self,
         db: &'a C,
@@ -467,6 +470,7 @@ where
     }
 
     /// Stream the result of the operation with PartialModel
+    #[cfg(feature = "stream")]
     pub async fn stream_partial_model<'a: 'b, 'b, C, M>(
         self,
         db: &'a C,
@@ -534,6 +538,7 @@ where
     }
 
     /// Stream the results of a Select operation on a Model
+    #[cfg(feature = "stream")]
     pub async fn stream<'a: 'b, 'b, C>(
         self,
         db: &'a C,
@@ -545,6 +550,7 @@ where
     }
 
     /// Stream the result of the operation with PartialModel
+    #[cfg(feature = "stream")]
     pub async fn stream_partial_model<'a: 'b, 'b, C, M, N>(
         self,
         db: &'a C,
@@ -597,6 +603,7 @@ where
     }
 
     /// Stream the result of the operation
+    #[cfg(feature = "stream")]
     pub async fn stream<'a: 'b, 'b, C>(
         self,
         db: &'a C,
@@ -608,6 +615,7 @@ where
     }
 
     /// Stream the result of the operation with PartialModel
+    #[cfg(feature = "stream")]
     pub async fn stream_partial_model<'a: 'b, 'b, C, M, N>(
         self,
         db: &'a C,
@@ -710,6 +718,7 @@ where
     }
 
     /// Stream the results of a Select operation on a Model
+    #[cfg(feature = "stream")]
     pub async fn stream<'a: 'b, 'b, C>(
         self,
         db: &'a C,
@@ -724,6 +733,7 @@ where
     }
 
     /// Stream the result of the operation with PartialModel
+    #[cfg(feature = "stream")]
     pub async fn stream_partial_model<'a: 'b, 'b, C, M, N, O>(
         self,
         db: &'a C,
@@ -804,6 +814,7 @@ where
     }
 
     /// Stream the results of the Select operation
+    #[cfg(feature = "stream")]
     pub async fn stream<'a: 'b, 'b, C>(
         self,
         db: &'a C,
@@ -1095,6 +1106,7 @@ where
     }
 
     /// Stream the results of the Select operation
+    #[cfg(feature = "stream")]
     pub async fn stream<'a: 'b, 'b, C>(
         self,
         db: &'a C,
